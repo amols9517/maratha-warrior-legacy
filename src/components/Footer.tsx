@@ -10,11 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logoEmblem} alt="Emblem" className="h-10 w-auto" />
-              <div>
-                <p className="font-display text-sm font-bold text-primary">ShriRam Shivkalin</p>
-                <p className="font-display text-xs text-foreground/80">Mardani Khel Akhada</p>
-              </div>
+              <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-14 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground">
               Preserving the ancient warrior traditions of Chhatrapati Shivaji Maharaj through Mardani Khel martial arts.

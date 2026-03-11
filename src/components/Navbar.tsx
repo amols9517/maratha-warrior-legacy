@@ -23,15 +23,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="section-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logoEmblem} alt="Akhada Emblem" className="h-10 md:h-12 w-auto" />
-          <div className="hidden sm:block">
-            <p className="font-display text-sm md:text-base font-bold text-primary leading-tight">
-              ShriRam Shivkalin
-            </p>
-            <p className="font-display text-xs md:text-sm text-foreground/80 leading-tight">
-              Mardani Khel Akhada
-            </p>
-          </div>
+          <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-12 md:h-14 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
