@@ -1,8 +1,9 @@
 import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
-const branchOptions = ["Pune (HQ)", "Kolhapur", "Satara", "Nashik", "Mumbai"];
+const branchOptions = ["Malegaon (HQ)", "Pune", "Kolhapur", "Nashik", "Mumbai"];
 
 const JoinTraining = () => {
   const [form, setForm] = useState({ name: "", age: "", location: "", contact: "", branch: "" });
