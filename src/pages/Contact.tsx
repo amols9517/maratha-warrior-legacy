@@ -8,18 +8,26 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill all required fields");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      message: form.message,
+    });
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
+    } else {
       toast.success("Message sent! We will get back to you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
-      setSubmitting(false);
-    }, 1000);
+    }
+    setSubmitting(false);
   };
 
   return (
