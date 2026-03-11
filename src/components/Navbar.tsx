@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LayoutDashboard, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/hooks/useAuth";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -18,6 +19,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, isAdmin, signOut } = useAuth();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -41,6 +43,22 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <>
+              {isAdmin && (
+                <Link to="/admin" className={`px-3 py-2 text-sm font-medium transition-colors rounded-md flex items-center gap-1 ${location.pathname === "/admin" ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-primary hover:bg-primary/5"}`}>
+                  <LayoutDashboard size={14} /> Admin
+                </Link>
+              )}
+              <button onClick={signOut} className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-md flex items-center gap-1">
+                <LogOut size={14} /> Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/auth" className={`px-3 py-2 text-sm font-medium transition-colors rounded-md flex items-center gap-1 ${location.pathname === "/auth" ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-primary hover:bg-primary/5"}`}>
+              <LogIn size={14} /> Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -77,6 +95,22 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              {user ? (
+                <>
+                  {isAdmin && (
+                    <Link to="/admin" onClick={() => setIsOpen(false)} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary flex items-center gap-2">
+                      <LayoutDashboard size={14} /> Admin Dashboard
+                    </Link>
+                  )}
+                  <button onClick={() => { signOut(); setIsOpen(false); }} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary text-left flex items-center gap-2">
+                    <LogOut size={14} /> Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/auth" onClick={() => setIsOpen(false)} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary flex items-center gap-2">
+                  <LogIn size={14} /> Login
+                </Link>
+              )}
             </div>
           </motion.div>
         )}
