@@ -86,7 +86,7 @@ const Contact = () => {
                     <Mail className="w-5 h-5 text-primary" /> info@mardanikhel.org
                   </a>
                   <p className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-primary mt-0.5" /> ShriRam Shivkalin Mardani Khel Akhada, Pune, Maharashtra 411001, India
+                    <MapPin className="w-5 h-5 text-primary mt-0.5" /> ShriRam Shivkalin Mardani Khel Akhada, Malegaon, Maharashtra, India
                   </p>
                 </div>
               </div>

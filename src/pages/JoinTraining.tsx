@@ -9,18 +9,27 @@ const JoinTraining = () => {
   const [form, setForm] = useState({ name: "", age: "", location: "", contact: "", branch: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.age || !form.contact || !form.branch) {
       toast.error("Please fill all required fields");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
+    const { error } = await supabase.from("training_requests").insert({
+      name: form.name,
+      age: parseInt(form.age),
+      location: form.location,
+      contact: form.contact,
+      preferred_branch: form.branch,
+    });
+    if (error) {
+      toast.error("Submission failed. Please try again.");
+    } else {
       toast.success("Application submitted successfully! We will contact you soon.");
       setForm({ name: "", age: "", location: "", contact: "", branch: "" });
-      setSubmitting(false);
-    }, 1000);
+    }
+    setSubmitting(false);
   };
 
   return (
