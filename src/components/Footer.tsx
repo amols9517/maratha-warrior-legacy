@@ -46,7 +46,7 @@ const Footer = () => {
                 <Mail size={14} /> info@mardanikhel.org
               </a>
               <p className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin size={14} className="mt-0.5 shrink-0" /> Pune, Maharashtra, India
+                <MapPin size={14} className="mt-0.5 shrink-0" /> Malegaon, Maharashtra, India
               </p>
             </div>
           </div>
