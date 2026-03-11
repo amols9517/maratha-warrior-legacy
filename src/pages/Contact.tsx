@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const Contact = () => {
