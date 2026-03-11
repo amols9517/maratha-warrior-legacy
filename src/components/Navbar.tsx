@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn, LayoutDashboard, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoEmblem from "@/assets/logo-emblem.png";
+import { useAuth } from "@/hooks/useAuth";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -18,20 +19,13 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, isAdmin, signOut } = useAuth();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="section-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logoEmblem} alt="Akhada Emblem" className="h-10 md:h-12 w-auto" />
-          <div className="hidden sm:block">
-            <p className="font-display text-sm md:text-base font-bold text-primary leading-tight">
-              ShriRam Shivkalin
-            </p>
-            <p className="font-display text-xs md:text-sm text-foreground/80 leading-tight">
-              Mardani Khel Akhada
-            </p>
-          </div>
+          <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-12 md:h-14 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
@@ -49,6 +43,22 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <>
+              {isAdmin && (
+                <Link to="/admin" className={`px-3 py-2 text-sm font-medium transition-colors rounded-md flex items-center gap-1 ${location.pathname === "/admin" ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-primary hover:bg-primary/5"}`}>
+                  <LayoutDashboard size={14} /> Admin
+                </Link>
+              )}
+              <button onClick={signOut} className="px-3 py-2 text-sm font-medium text-foreground/70 hover:text-primary transition-colors rounded-md flex items-center gap-1">
+                <LogOut size={14} /> Logout
+              </button>
+            </>
+          ) : (
+            <Link to="/auth" className={`px-3 py-2 text-sm font-medium transition-colors rounded-md flex items-center gap-1 ${location.pathname === "/auth" ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-primary hover:bg-primary/5"}`}>
+              <LogIn size={14} /> Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -85,6 +95,22 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              {user ? (
+                <>
+                  {isAdmin && (
+                    <Link to="/admin" onClick={() => setIsOpen(false)} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary flex items-center gap-2">
+                      <LayoutDashboard size={14} /> Admin Dashboard
+                    </Link>
+                  )}
+                  <button onClick={() => { signOut(); setIsOpen(false); }} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary text-left flex items-center gap-2">
+                    <LogOut size={14} /> Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/auth" onClick={() => setIsOpen(false)} className="px-4 py-3 rounded-md text-sm font-medium text-foreground/70 hover:text-primary flex items-center gap-2">
+                  <LogIn size={14} /> Login
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

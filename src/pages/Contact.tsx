@@ -1,24 +1,33 @@
 import { useState } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill all required fields");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      message: form.message,
+    });
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
+    } else {
       toast.success("Message sent! We will get back to you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
-      setSubmitting(false);
-    }, 1000);
+    }
+    setSubmitting(false);
   };
 
   return (
@@ -77,7 +86,7 @@ const Contact = () => {
                     <Mail className="w-5 h-5 text-primary" /> info@mardanikhel.org
                   </a>
                   <p className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-primary mt-0.5" /> ShriRam Shivkalin Mardani Khel Akhada, Pune, Maharashtra 411001, India
+                    <MapPin className="w-5 h-5 text-primary mt-0.5" /> ShriRam Shivkalin Mardani Khel Akhada, Malegaon, Maharashtra, India
                   </p>
                 </div>
               </div>

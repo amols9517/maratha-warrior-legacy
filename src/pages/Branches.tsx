@@ -3,21 +3,21 @@ import { MapPin, Phone, Clock, User } from "lucide-react";
 
 const branches = [
   {
-    name: "Pune Main Branch (HQ)",
+    name: "Malegaon Main Branch (HQ)",
     trainer: "Guruji Shriram Patil",
     timings: "Mon–Sat: 6:00 AM – 8:00 AM & 5:00 PM – 7:00 PM",
     contact: "+91 98765 43210",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242117.68079314828!2d73.72287834725046!3d18.524598937498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59895.80828717!2d74.49!3d20.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdf28b3b4d5c58f%3A0x8c7d3a5f7e2e1a0!2sMalegaon%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
   },
   {
-    name: "Kolhapur Branch",
+    name: "Pune Branch",
     trainer: "Trainer Rajesh More",
     timings: "Mon–Sat: 6:30 AM – 8:30 AM",
     contact: "+91 98765 43211",
     mapUrl: "",
   },
   {
-    name: "Satara Branch",
+    name: "Kolhapur Branch",
     trainer: "Trainer Vikram Jadhav",
     timings: "Mon–Fri: 5:30 PM – 7:30 PM",
     contact: "+91 98765 43212",
