@@ -1,43 +1,43 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { useLanguage } from "@/hooks/useLanguage";
+import logo from "@/assets/logo-original.jpeg";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-secondary border-t border-border">
       <div className="section-container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-14 w-auto" />
+              <div className="rounded-lg overflow-hidden bg-foreground/90">
+                <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-14 w-auto" />
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Preserving the ancient warrior traditions of Chhatrapati Shivaji Maharaj through Mardani Khel martial arts.
-            </p>
+            <p className="text-sm text-muted-foreground">{t("footer.description")}</p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold text-primary mb-4">Quick Links</h4>
+            <h4 className="font-display font-semibold text-primary mb-4">{t("footer.quickLinks")}</h4>
             <div className="flex flex-col gap-2">
               {[
-                { path: "/about", label: "About Us" },
-                { path: "/gallery", label: "Gallery" },
-                { path: "/branches", label: "Branches" },
-                { path: "/events", label: "Events & Shows" },
-                { path: "/join", label: "Join Training" },
+                { path: "/about", labelKey: "nav.about" },
+                { path: "/gallery", labelKey: "nav.gallery" },
+                { path: "/branches", labelKey: "nav.branches" },
+                { path: "/events", labelKey: "footer.eventsShows" },
+                { path: "/join", labelKey: "nav.join" },
               ].map((link) => (
                 <Link key={link.path} to={link.path} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h4 className="font-display font-semibold text-primary mb-4">Contact</h4>
+            <h4 className="font-display font-semibold text-primary mb-4">{t("footer.contact")}</h4>
             <div className="flex flex-col gap-3">
               <a href="tel:+919876543210" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <Phone size={14} /> +91 98765 43210
@@ -51,9 +51,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Social */}
           <div>
-            <h4 className="font-display font-semibold text-primary mb-4">Follow Us</h4>
+            <h4 className="font-display font-semibold text-primary mb-4">{t("footer.followUs")}</h4>
             <div className="flex gap-3">
               {["Facebook", "Instagram", "YouTube"].map((social) => (
                 <a
@@ -70,7 +69,7 @@ const Footer = () => {
 
         <div className="border-t border-border mt-10 pt-6 text-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} ShriRam Shivkalin Mardani Khel Akhada. All rights reserved.
+            © {new Date().getFullYear()} ShriRam Shivkalin Mardani Khel Akhada. {t("footer.rights")}
           </p>
           <p className="text-xs text-primary/60 mt-1 font-display">
             जय शिवराय! | Jai Shivray!
