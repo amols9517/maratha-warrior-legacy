@@ -25,7 +25,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="section-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-12 md:h-14 w-auto" />
+          <div className="relative flex items-center justify-center p-1.5 rounded-lg bg-gradient-to-br from-primary/20 to-gold/10 border border-primary/30 shadow-[0_0_15px_hsl(var(--saffron)/0.3)]">
+            <img src={logo} alt="ShriRam Shivkalin Mardani Khel Akhada" className="h-10 md:h-12 w-auto drop-shadow-[0_0_4px_rgba(255,255,255,0.3)]" />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
