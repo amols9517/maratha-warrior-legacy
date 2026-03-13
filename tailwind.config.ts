@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Cinzel", "serif"],
-        body: ["Raleway", "sans-serif"],
+        display: ["Cinzel", "'Noto Sans Devanagari'", "serif"],
+        body: ["Raleway", "'Noto Sans Devanagari'", "sans-serif"],
+        devanagari: ["'Noto Sans Devanagari'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
