@@ -164,6 +164,54 @@ export type Database = {
         }
         Relationships: []
       }
+      library_books: {
+        Row: {
+          author: string | null
+          category: string
+          cover_url: string | null
+          created_at: string
+          description_en: string | null
+          description_mr: string | null
+          external_link: string | null
+          id: string
+          is_visible: boolean | null
+          sort_order: number | null
+          title_en: string
+          title_mr: string | null
+          updated_at: string
+        }
+        Insert: {
+          author?: string | null
+          category?: string
+          cover_url?: string | null
+          created_at?: string
+          description_en?: string | null
+          description_mr?: string | null
+          external_link?: string | null
+          id?: string
+          is_visible?: boolean | null
+          sort_order?: number | null
+          title_en: string
+          title_mr?: string | null
+          updated_at?: string
+        }
+        Update: {
+          author?: string | null
+          category?: string
+          cover_url?: string | null
+          created_at?: string
+          description_en?: string | null
+          description_mr?: string | null
+          external_link?: string | null
+          id?: string
+          is_visible?: boolean | null
+          sort_order?: number | null
+          title_en?: string
+          title_mr?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
