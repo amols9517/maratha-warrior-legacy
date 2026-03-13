@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate } from "react-router-dom";
-import { LayoutDashboard, Image, Calendar, MapPin, MessageSquare, Users, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, Image, Calendar, MapPin, MessageSquare, Users, FileText, LogOut, BookOpen } from "lucide-react";
 import AdminGallery from "./AdminGallery";
 import AdminEvents from "./AdminEvents";
 import AdminBranches from "./AdminBranches";
 import AdminTrainingRequests from "./AdminTrainingRequests";
 import AdminContactMessages from "./AdminContactMessages";
 import AdminContent from "./AdminContent";
+import AdminLibrary from "./AdminLibrary";
 
 const tabs = [
   { id: "gallery", label: "Gallery", icon: Image },
   { id: "events", label: "Events", icon: Calendar },
   { id: "branches", label: "Branches", icon: MapPin },
+  { id: "library", label: "Library", icon: BookOpen },
   { id: "training", label: "Training Requests", icon: Users },
   { id: "messages", label: "Contact Messages", icon: MessageSquare },
   { id: "content", label: "Site Content", icon: FileText },
