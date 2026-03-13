@@ -41,6 +41,7 @@ const AdminDashboard = () => {
       case "events": return <AdminEvents />;
       case "branches": return <AdminBranches />;
       case "library": return <AdminLibrary />;
+      case "training": return <AdminTrainingRequests />;
       case "messages": return <AdminContactMessages />;
       case "content": return <AdminContent />;
       default: return null;
